@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Equity · PR Review Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════ AUTH OVERLAY ═══════════════════════ -->
+<div id="authOverlay" class="auth-overlay" aria-modal="true" role="dialog">
+  <div class="auth-bg">
+    <div class="auth-bg-grid"></div>
+    <div class="auth-bg-glow auth-bg-glow-1"></div>
+    <div class="auth-bg-glow auth-bg-glow-2"></div>
+  </div>
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="auth-logo-mark">
+        <svg viewBox="0 0 36 36" fill="none">
+          <rect width="36" height="36" rx="8" fill="url(#alg)"/>
+          <path d="M7 26 L13 11 L18 20 L23 14 L29 26" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="18" cy="20" r="2.5" fill="#93C5FD"/>
+          <defs><linearGradient id="alg" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#1D4ED8"/><stop offset="1" stop-color="#0EA5E9"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div>
+        <div class="auth-brand-name">mind<strong>teck</strong> · Equity</div>
+        <div class="auth-brand-tag">PR Review Intelligence</div>
+      </div>
+    </div>
+
+    <!-- ── Login ── -->
+    <div id="panelLogin" class="auth-panel">
+      <h2 class="auth-title">Welcome back</h2>
+      <p class="auth-sub">Sign in to your account to continue.</p>
+
+      <button type="button" class="btn-google" id="googleLoginBtn">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Continue with Google
+      </button>
+      <div class="auth-divider"><span>or sign in with email</span></div>
+
+      <form id="loginForm" class="auth-form" autocomplete="off" novalidate>
+        <div class="field">
+          <label for="loginEmail">Email address</label>
+          <input id="loginEmail" type="email" placeholder="you@company.com" required autocomplete="email"/>
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" type="password" placeholder="••••••••" required autocomplete="current-password"/>
+        </div>
+        <div class="auth-error" id="loginError" hidden></div>
+        <button type="submit" class="btn-auth-primary" id="loginBtn">
+          <span>Continue</span>
+          <svg viewBox="0 0 16 16" fill="none" width="16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+      <div class="auth-switch">No account? <button type="button" id="switchToRegister">Create one →</button></div>
+    </div>
+
+    <!-- ── Login OTP ── -->
+    <div id="panelLoginOtp" class="auth-panel hidden">
+      <div class="otp-icon">
+        <svg viewBox="0 0 48 48" fill="none" width="48">
+          <rect x="4" y="10" width="40" height="28" rx="5" stroke="url(#og1)" stroke-width="2"/>
+          <path d="M4 18l20 13 20-13" stroke="url(#og1)" stroke-width="2" stroke-linecap="round"/>
+          <defs><linearGradient id="og1" x1="4" y1="10" x2="44" y2="38" gradientUnits="userSpaceOnUse"><stop stop-color="#1D4ED8"/><stop offset="1" stop-color="#0EA5E9"/></linearGradient></defs>
+        </svg>
+      </div>
+      <h2 class="auth-title">Check your inbox</h2>
+      <p class="auth-sub" id="loginOtpSub">Enter the 6-digit code we sent to your email.</p>
+      <form id="loginOtpForm" class="auth-form" autocomplete="off" novalidate>
+        <div class="field">
+          <label for="loginOtpCode">Verification code</label>
+          <input id="loginOtpCode" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" class="otp-input" required autocomplete="one-time-code"/>
+        </div>
+        <div class="auth-error" id="loginOtpError" hidden></div>
+        <button type="submit" class="btn-auth-primary" id="loginOtpBtn">
+          <span>Verify &amp; Sign in</span>
+          <svg viewBox="0 0 16 16" fill="none" width="16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+      <div class="auth-switch"><button type="button" id="loginOtpBack">← Back</button></div>
+    </div>
+
+    <!-- ── Register ── -->
+    <div id="panelRegister" class="auth-panel hidden">
+      <h2 class="auth-title">Create account</h2>
+      <p class="auth-sub">We'll verify your email with a one-time code.</p>
+      <form id="registerForm" class="auth-form" autocomplete="off" novalidate>
+        <div class="field">
+          <label for="regName">Full name</label>
+          <input id="regName" type="text" placeholder="Jane Smith" required autocomplete="name"/>
+        </div>
+        <div class="field">
+          <label for="regEmail">Email address</label>
+          <input id="regEmail" type="email" placeholder="you@company.com" required autocomplete="email"/>
+        </div>
+        <div class="field">
+          <label for="regPassword">Password <span class="hint-label">min. 6 chars</span></label>
+          <input id="regPassword" type="password" placeholder="••••••••" required autocomplete="new-password" minlength="6"/>
+        </div>
+        <div class="auth-error" id="registerError" hidden></div>
+        <button type="submit" class="btn-auth-primary" id="registerBtn">
+          <span>Send verification code</span>
+          <svg viewBox="0 0 16 16" fill="none" width="16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+      <div class="auth-switch">Already have an account? <button type="button" id="switchToLogin">Sign in →</button></div>
+    </div>
+
+    <!-- ── Register OTP ── -->
+    <div id="panelRegisterOtp" class="auth-panel hidden">
+      <div class="otp-icon">
+        <svg viewBox="0 0 48 48" fill="none" width="48">
+          <rect x="4" y="10" width="40" height="28" rx="5" stroke="url(#og2)" stroke-width="2"/>
+          <path d="M4 18l20 13 20-13" stroke="url(#og2)" stroke-width="2" stroke-linecap="round"/>
+          <defs><linearGradient id="og2" x1="4" y1="10" x2="44" y2="38" gradientUnits="userSpaceOnUse"><stop stop-color="#1D4ED8"/><stop offset="1" stop-color="#0EA5E9"/></linearGradient></defs>
+        </svg>
+      </div>
+      <h2 class="auth-title">Verify your email</h2>
+      <p class="auth-sub" id="regOtpSub">Enter the 6-digit code we sent to your email.</p>
+      <form id="registerOtpForm" class="auth-form" autocomplete="off" novalidate>
+        <div class="field">
+          <label for="regOtpCode">Verification code</label>
+          <input id="regOtpCode" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" class="otp-input" required autocomplete="one-time-code"/>
+        </div>
+        <div class="auth-error" id="regOtpError" hidden></div>
+        <button type="submit" class="btn-auth-primary" id="regOtpBtn">
+          <span>Verify &amp; Create account</span>
+          <svg viewBox="0 0 16 16" fill="none" width="16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+      <div class="auth-switch"><button type="button" id="regOtpBack">← Back to registration</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<header class="site-header">
+  <div class="header-wrap">
+    <a href="/" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 36 36" fill="none">
+          <rect width="36" height="36" rx="8" fill="url(#hlg)"/>
+          <path d="M7 26 L13 11 L18 20 L23 14 L29 26" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="18" cy="20" r="2.5" fill="#93C5FD"/>
+          <defs><linearGradient id="hlg" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#1D4ED8"/><stop offset="1" stop-color="#0EA5E9"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div class="logo-text-wrap">
+        <span class="logo-wordmark">Equity</span>
+        <span class="logo-sub">PR Review Intelligence</span>
+      </div>
+    </a>
+
+    <nav class="topnav" id="topnav">
+      <a href="#section-overview">Overview</a>
+      <a href="#section-fairness">Fairness</a>
+      <a href="#section-delays">Delays</a>
+      <a href="#section-emotional">Tone</a>
+      <a href="#section-risk">Risk</a>
+      <a href="#section-bias">Bias</a>
+      <a href="#section-burnout">Burnout</a>
+      <a href="#section-author">Authors</a>
+      <a href="#section-recs">Suggestions</a>
+      <a href="#section-trend">Trend</a>
+      <a href="#section-compare">Compare</a>
+      <a href="#section-chat">AI Chat</a>
+    </nav>
+
+    <div class="header-right">
+      <div class="status-pill" id="aiStatusPill" title="AI provider">
+        <span class="dot"></span><span id="aiStatusText">checking…</span>
+      </div>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">☀</button>
+      <div class="user-pill hidden" id="userPill">
+        <div class="user-avatar" id="userAvatar">?</div>
+        <span class="user-name" id="userDisplayName">User</span>
+        <button class="user-signout" id="logoutBtn">Sign out</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════ HERO / INPUT ═══════════════════════ -->
+<section class="app-hero">
+  <div class="app-hero-bg">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-bg-glow g1"></div>
+    <div class="hero-bg-glow g2"></div>
+  </div>
+  <div class="app-hero-inner">
+    <div class="app-hero-left">
+      <div class="hero-badge">
+        <span class="badge-pulse"></span>
+        MINDAITHON — Live Analysis Tool
+      </div>
+      <h1 class="app-hero-title">
+        Who's doing the<br/>
+        <span class="gradient-text">actual reviewing?</span>
+      </h1>
+      <p class="app-hero-sub">
+        Equity scans your repository's pull requests and surfaces hidden imbalance —
+        overloaded reviewers, stale PRs, favoritism, and silent burnout.
+      </p>
+
+      <form id="analyzeForm" class="analyze-form" autocomplete="off">
+        <div class="form-row">
+          <div class="input-group">
+            <span class="input-prefix">github.com/</span>
+            <input id="repoInput" type="text" placeholder="owner/repo" value="facebook/react" required/>
+          </div>
+          <div class="select-wrap">
+            <select id="prCount">
+              <option value="20">20 PRs</option>
+              <option value="30" selected>30 PRs</option>
+              <option value="50">50 PRs</option>
+              <option value="75">75 PRs</option>
+              <option value="100">100 PRs</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-analyze" id="analyzeBtn">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+            Run Analysis
+          </button>
+        </div>
+        <div class="form-hint" id="formHint">Tip — start with a small public repo (≤30 PRs) for a fast first run.</div>
+      </form>
+
+      <!-- Label filter -->
+      <div id="labelFilterRow" class="label-filter-row" hidden>
+        <span class="filter-label">Filter by label:</span>
+        <div id="labelChips"></div>
+        <span class="filter-hint" id="labelFilterHint"></span>
+      </div>
+
+      <!-- Risk weights -->
+      <button class="risk-weights-toggle" id="riskWeightsToggle">
+        <svg viewBox="0 0 16 16" fill="none" width="14"><path d="M3 4h10M5 8h6M7 12h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Customize risk weights
+      </button>
+      <div class="risk-weights-panel" id="riskWeightsPanel">
+        <div class="rw-grid">
+          <div class="rw-field"><label>Large diff threshold (lines)</label><input type="number" id="wLargeDiff" value="400" min="50" max="5000" step="50"/></div>
+          <div class="rw-field"><label>Very large diff threshold</label><input type="number" id="wVeryLargeDiff" value="1000" min="200" max="10000" step="100"/></div>
+          <div class="rw-field"><label>Fast merge hours</label><input type="number" id="wFastMergeHours" value="1" min="0.25" max="24" step="0.25"/></div>
+          <div class="rw-field"><label>Many files threshold</label><input type="number" id="wManyFiles" value="30" min="5" max="200" step="5"/></div>
+        </div>
+      </div>
+
+      <!-- Recent runs -->
+      <div class="recent-row" id="recentRow" hidden>
+        <span class="recent-label">Recent runs</span>
+        <div class="recent-chips" id="recentChips"></div>
+      </div>
+
+      <!-- Saved repos -->
+      <div class="saved-repos-bar" id="savedReposBar" hidden>
+        <span class="saved-repos-label">Saved repos</span>
+        <div id="savedRepoChips"></div>
+        <button class="save-repo-btn" id="saveCurrentRepoBtn" hidden>+ Save current</button>
+      </div>
+    </div>
+
+    <aside class="app-hero-right">
+      <div class="metrics-preview">
+        <div class="mp-header">
+          <span class="mp-title">What we measure</span>
+          <span class="mp-live"><span class="live-dot"></span>7 signals</span>
+        </div>
+        <div class="mp-items">
+          <div class="mp-item"><span class="mp-num">01</span><span>Reviewer load distribution &amp; Gini coefficient</span></div>
+          <div class="mp-item"><span class="mp-num">02</span><span>First-review and approval turnaround</span></div>
+          <div class="mp-item"><span class="mp-num">03</span><span>Emotional tone &amp; psychological safety</span></div>
+          <div class="mp-item"><span class="mp-num">04</span><span>Per-PR risk scoring with AI reasons</span></div>
+          <div class="mp-item"><span class="mp-num">05</span><span>Favoritism &amp; isolated-author patterns</span></div>
+          <div class="mp-item"><span class="mp-num">06</span><span>Late-night / weekend burnout signals</span></div>
+          <div class="mp-item"><span class="mp-num">07</span><span>Workload-balanced reviewer suggestions</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PROGRESS ═══════════════════════ -->
+<section class="progress-shell" id="progressShell" hidden>
+  <div class="progress-card">
+    <div class="progress-top">
+      <div class="progress-spinner"></div>
+      <div class="progress-info">
+        <span class="progress-label" id="progressLabel">Starting…</span>
+        <span class="progress-count" id="progressCount">0 / 0</span>
+      </div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-meta" id="progressMeta">Validating GitHub token…</div>
+    <div class="rate-limit-row" id="rateLimitRow" hidden>
+      <span class="rl-label" id="rateLimitText">GitHub API</span>
+      <div class="rate-limit-bar"><div class="rate-limit-fill" id="rateLimitFill" style="width:100%"></div></div>
+      <span class="rl-eta" id="rateLimitEta"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ ERROR ═══════════════════════ -->
+<section class="error-shell" id="errorShell" hidden>
+  <div class="error-card">
+    <div class="error-icon">
+      <svg viewBox="0 0 20 20" fill="currentColor" width="20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+    </div>
+    <div>
+      <div class="error-title">Something went wrong</div>
+      <div class="error-body" id="errorBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ DASHBOARD ═══════════════════════ -->
+<main class="dashboard" id="dashboard" hidden>
+
+  <!-- ── OVERVIEW ── -->
+  <section id="section-overview" class="dash-section">
+    <div class="section-wrap">
+      <header class="dash-section-head">
+        <div>
+          <span class="section-eyebrow">01 — Overview</span>
+          <h2 class="section-title">Team health, at a glance.</h2>
+        </div>
+        <div class="section-actions">
+          <div class="section-meta" id="overviewMeta"></div>
+          <a class="export-btn" id="exportBtn" href="#" download hidden>
+            <svg viewBox="0 0 16 16" fill="none" width="14"><path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Export Report
+          </a>
+        </div>
+      </header>
+      <div class="kpi-grid">
+        <div class="kpi kpi-headline">
+          <div class="kpi-eyebrow">Team Health Score</div>
+          <div class="kpi-value" id="kpiHealth">—</div>
+          <div class="kpi-bar"><div class="kpi-bar-fill" id="kpiHealthBar"></div></div>
+          <div class="kpi-foot" id="kpiHealthFoot">Composite of fairness, quality, risk, and speed</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-icon" style="background:rgba(52,211,153,.12);color:#34D399">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="kpi-eyebrow">Fairness Score</div>
+          <div class="kpi-value" id="kpiFairness">—</div>
+          <div class="kpi-foot" id="kpiFairnessFoot">Gini —</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-icon" style="background:rgba(96,165,250,.12);color:#60A5FA">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="kpi-eyebrow">Psych Safety</div>
+          <div class="kpi-value" id="kpiPsychSafety">—</div>
+          <div class="kpi-foot" id="kpiPsychSafetyFoot">tone score / 100</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-icon" style="background:rgba(251,191,36,.12);color:#FBBF24">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="kpi-eyebrow">Median First Review</div>
+          <div class="kpi-value" id="kpiFirstReview">—</div>
+          <div class="kpi-foot">hours after open</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-icon" style="background:rgba(248,113,113,.12);color:#F87171">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="kpi-eyebrow">High-Risk PRs</div>
+          <div class="kpi-value" id="kpiRisk">—</div>
+          <div class="kpi-foot" id="kpiRiskFoot">of — total</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-icon" style="background:rgba(167,139,250,.12);color:#A78BFA">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+          </div>
+          <div class="kpi-eyebrow">Stale PRs</div>
+          <div class="kpi-value" id="kpiStale">—</div>
+          <div class="kpi-foot">open &gt; 3–7 days</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAIRNESS ── -->
+  <section id="section-fairness" class="dash-section alt">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">02 — Reviewer Inequality</span><h2 class="section-title">Where the load really sits.</h2></div></header>
+      <div class="grid g-2-1">
+        <div class="dash-card">
+          <div class="card-head"><h3>Reviews per reviewer</h3><span class="card-tag" id="fairnessGiniTag">Gini —</span></div>
+          <div class="chart-wrap"><canvas id="chartReviewers"></canvas></div>
+        </div>
+        <div class="dash-card">
+          <div class="card-head"><h3>Overloaded reviewers</h3></div>
+          <ul class="data-list" id="overloadedList"><li class="empty-item">No overloaded reviewers detected.</li></ul>
+          <div class="card-divider"></div>
+          <div class="card-head"><h3>Inactive / non-responsive</h3></div>
+          <ul class="data-list" id="inactiveList"><li class="empty-item">No inactive reviewers detected.</li></ul>
+        </div>
+      </div>
+      <div class="dash-card" style="margin-top:20px">
+        <div class="card-head"><h3>Reviewer SLA Compliance</h3><span class="card-tag" id="slaOverallTag">24h SLA</span></div>
+        <p class="card-desc">Percentage of reviews submitted within the SLA window after PR was opened.</p>
+        <div id="slaList"><div class="empty-state">No SLA data yet.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DELAYS ── -->
+  <section id="section-delays" class="dash-section">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">03 — PR Delay Analytics</span><h2 class="section-title">How long PRs really wait.</h2></div></header>
+      <div class="grid g-2-1">
+        <div class="dash-card">
+          <div class="card-head"><h3>Time-to-first-review distribution (hours)</h3></div>
+          <div class="chart-wrap"><canvas id="chartFirstReview"></canvas></div>
+        </div>
+        <div class="dash-card">
+          <div class="card-head"><h3>Key stats</h3></div>
+          <div class="stat-grid" id="delayStats"></div>
+        </div>
+      </div>
+      <div class="dash-card" style="margin-top:20px">
+        <div class="card-head"><h3>Stale pull requests</h3><span class="card-tag" id="staleCountTag">—</span></div>
+        <div class="table-wrap">
+          <table class="data-table" id="staleTable">
+            <thead><tr><th>#</th><th>Title</th><th>Author</th><th>Open for</th><th>State</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EMOTIONAL ── -->
+  <section id="section-emotional" class="dash-section alt">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">04 — Emotional Intelligence</span><h2 class="section-title">How does feedback <em>feel</em>?</h2></div></header>
+      <div class="grid g-2-1">
+        <div class="dash-card">
+          <div class="card-head"><h3>Team psychological safety</h3><span class="card-tag" id="psychSafetyTag">—</span></div>
+          <div id="psychSafetyScore" class="big-score">—</div>
+          <p class="card-desc" style="margin-bottom:16px">Higher is healthier. Below 70 means corrective action is needed.</p>
+          <div id="toneBreakdown" class="data-list"></div>
+        </div>
+        <div class="dash-card">
+          <div class="card-head"><h3>Reviewers ranked by EI</h3><span class="card-tag">Score 0–100</span></div>
+          <ul class="data-list" id="reviewerEIList"><li class="empty-item">No reviewer data yet.</li></ul>
+        </div>
+      </div>
+      <div class="dash-card" style="margin-top:20px">
+        <div class="card-head"><h3>Authors at psychological risk</h3><span class="card-tag" id="atRiskAuthorsTag">0 found</span></div>
+        <p class="card-desc">Contributors receiving 30%+ negative feedback may be experiencing review fatigue.</p>
+        <div id="atRiskAuthorsList"><div class="empty-state">No authors at risk — good signal.</div></div>
+      </div>
+      <div class="dash-card" style="margin-top:20px">
+        <div class="card-head"><h3>Flagged comments</h3><span class="card-tag" id="flaggedCommentsTag">0 flagged</span></div>
+        <div class="table-wrap">
+          <table class="data-table" id="flaggedCommentsTable">
+            <thead><tr><th>PR</th><th>Reviewer</th><th>Tone</th><th>What they said</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RISK ── -->
+  <section id="section-risk" class="dash-section">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">05 — PR Risk</span><h2 class="section-title">The PRs you should look at twice.</h2></div></header>
+      <div class="grid g-1-2">
+        <div class="dash-card">
+          <div class="card-head"><h3>Risk distribution</h3></div>
+          <div class="chart-wrap"><canvas id="chartRisk"></canvas></div>
+        </div>
+        <div class="dash-card">
+          <div class="card-head"><h3>Top risky pull requests</h3></div>
+          <div class="risk-list" id="riskList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BIAS ── -->
+  <section id="section-bias" class="dash-section alt">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">06 — Bias &amp; Favoritism</span><h2 class="section-title">Patterns the calendar doesn't show.</h2></div></header>
+      <div class="grid g-3">
+        <div class="dash-card"><div class="card-head"><h3>Reviewer favoritism</h3></div><ul class="data-list" id="favoritismList"><li class="empty-item">No strong favoritism detected.</li></ul></div>
+        <div class="dash-card"><div class="card-head"><h3>Repeated approval groups</h3></div><ul class="data-list" id="repeatedGroupsList"><li class="empty-item">No repeated groups detected.</li></ul></div>
+        <div class="dash-card"><div class="card-head"><h3>Isolated authors</h3></div><ul class="data-list" id="isolatedList"><li class="empty-item">No isolated authors detected.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BURNOUT ── -->
+  <section id="section-burnout" class="dash-section">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">07 — Burnout Signals</span><h2 class="section-title">When are people actually reviewing?</h2></div></header>
+      <div class="grid g-2-1">
+        <div class="dash-card"><div class="card-head"><h3>Late-night vs weekend share</h3></div><div class="chart-wrap chart-wrap-tall"><canvas id="chartBurnout"></canvas></div></div>
+        <div class="dash-card"><div class="card-head"><h3>At-risk reviewers</h3></div><ul class="data-list" id="burnoutList"><li class="empty-item">No burnout signals detected.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RECOMMENDATIONS ── -->
+  <section id="section-recs" class="dash-section alt">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">08 — Smart Suggestions</span><h2 class="section-title">Balanced choices for open PRs.</h2></div></header>
+      <div class="dash-card"><div class="card-head"><h3>Open pull requests</h3></div><div class="rec-list" id="recList"><div class="empty-state">No open PRs in the analyzed window.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ── AUTHOR ── -->
+  <section id="section-author" class="dash-section">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">09 — Author Analytics</span><h2 class="section-title">Who's shipping what?</h2></div></header>
+      <div class="dash-card"><div class="card-head"><h3>Per-author breakdown</h3><span class="card-tag" id="authorCountTag">0 authors</span></div><div id="authorGrid" class="author-grid"><div class="empty-state">Run an analysis to see author metrics.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ── TREND ── -->
+  <section id="section-trend" class="dash-section alt">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">10 — Health Trend</span><h2 class="section-title">How things change over time.</h2></div></header>
+      <div class="dash-card">
+        <div class="card-head"><h3>Team health score over time</h3><span class="card-tag" id="trendSnapTag">0 snapshots</span></div>
+        <div class="chart-wrap" style="height:260px"><canvas id="chartTrend"></canvas></div>
+        <div class="trend-empty" id="trendEmpty">Run the same repository more than once to see trends.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMPARE ── -->
+  <section id="section-compare" class="dash-section">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">11 — Multi-Repo Compare</span><h2 class="section-title">Side-by-side repo health.</h2></div></header>
+      <div class="dash-card">
+        <div class="compare-form">
+          <div class="field"><label for="compareRepo1">Repo 1</label><input id="compareRepo1" type="text" placeholder="owner/repo"/></div>
+          <div class="field"><label for="compareRepo2">Repo 2</label><input id="compareRepo2" type="text" placeholder="owner/repo"/></div>
+          <div class="field"><label for="compareRepo3">Repo 3 (optional)</label><input id="compareRepo3" type="text" placeholder="owner/repo"/></div>
+          <button class="btn-analyze" id="compareBtn">
+            <svg viewBox="0 0 16 16" fill="none" width="14"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Compare
+          </button>
+        </div>
+        <div id="compareResult"><div class="empty-state">Enter 2–3 repos above and click Compare.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CHAT ── -->
+  <section id="section-chat" class="dash-section alt">
+    <div class="section-wrap">
+      <header class="dash-section-head"><div><span class="section-eyebrow">12 — AI Assistant</span><h2 class="section-title">Ask anything in plain English.</h2></div></header>
+      <div class="dash-card chat-card">
+        <div class="chat-suggestions">
+          <button class="chip" data-q="Who is overloaded?">Who is overloaded?</button>
+          <button class="chip" data-q="Which PRs are risky?">Which PRs are risky?</button>
+          <button class="chip" data-q="Show me stale PRs">Stale PRs</button>
+          <button class="chip" data-q="Are there rubber-stamp approvals?">Rubber-stamp?</button>
+          <button class="chip" data-q="Any signs of favoritism?">Favoritism?</button>
+          <button class="chip" data-q="Who's at risk of burnout?">Burnout?</button>
+          <button class="chip" data-q="Give me an overall summary">Summary</button>
+        </div>
+        <div class="chat-thread" id="chatThread">
+          <div class="chat-empty">Ask me anything about reviewer fairness, PR delays, risk, bias, or burnout.</div>
+        </div>
+        <form class="chat-input-form" id="chatForm">
+          <textarea id="chatInput" rows="1" placeholder="Ask anything… e.g. Why are backend PRs delayed? Who's burning out?" autocomplete="off"></textarea>
+          <button type="submit" class="chat-send-btn">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <div class="footer-inner">
+    <span>Equity · PR Review Intelligence</span>
+    <span>Built for MINDAITHON — Real GitHub data, no mocks.</span>
+    <a href="/">← Back to Portal</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

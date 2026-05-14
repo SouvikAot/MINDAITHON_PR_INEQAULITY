@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Mindteck — AI Solutions Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,300;1,14..32,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="landing.css"/>
+</head>
+<body>
+
+<!-- ═══════════════ TOP STRIP ═══════════════ -->
+<div class="topstrip">
+  <div class="wrap topstrip-inner">
+    <span class="topstrip-left">🏆 MINDAITHON 2025 — AI Innovation Hackathon</span>
+    <div class="topstrip-links">
+      <a href="#">Press Room</a><a href="#">Investors</a><a href="#">Careers</a><a href="#">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="header" id="header">
+  <div class="wrap header-inner">
+    <a href="/" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 36 36" fill="none">
+          <rect width="36" height="36" rx="8" fill="url(#lg1)"/>
+          <path d="M7 26 L13 11 L18 20 L23 14 L29 26" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="18" cy="20" r="2.5" fill="#93C5FD"/>
+          <defs><linearGradient id="lg1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#1D4ED8"/><stop offset="1" stop-color="#0EA5E9"/></linearGradient></defs>
+        </svg>
+      </div>
+      <span class="logo-wordmark">mind<strong>teck</strong></span>
+    </a>
+    <nav class="nav">
+      <a href="#solutions">Solutions</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#about">About</a>
+    </nav>
+    <a href="/app" class="header-cta">Launch Tool <span class="arrow">→</span></a>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80" alt="" class="hero-img" loading="eager"/>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid-lines"></div>
+  </div>
+  <div class="wrap hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="badge-pulse"></span>
+        MINDAITHON — Live AI Hackathon Tool
+      </div>
+      <h1 class="hero-h1">
+        Smarter Engineering<br/>
+        <span class="gradient-text">Teams Start Here.</span>
+      </h1>
+      <p class="hero-p">
+        AI-powered intelligence tools that surface the hidden patterns
+        in how engineering teams collaborate, review, and ship — helping
+        you build fairer, faster, and more resilient organizations.
+      </p>
+      <div class="hero-btns">
+        <a href="/app" class="btn-glow">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+          Launch PR Analyzer
+        </a>
+        <a href="#solutions" class="btn-line">Explore All Tools</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-dot green"></span>Live GitHub data</div>
+        <div class="trust-item"><span class="trust-dot blue"></span>AI-powered insights</div>
+        <div class="trust-item"><span class="trust-dot purple"></span>No mocks</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hcard-top">
+          <div class="hcard-dot red"></div><div class="hcard-dot yellow"></div><div class="hcard-dot green"></div>
+          <span class="hcard-label">Team Health Score</span>
+        </div>
+        <div class="hcard-score">
+          <div class="score-ring">
+            <svg viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="34" stroke="rgba(255,255,255,0.08)" stroke-width="8" fill="none"/>
+              <circle cx="40" cy="40" r="34" stroke="url(#sg)" stroke-width="8" fill="none"
+                stroke-dasharray="175 38" stroke-linecap="round" transform="rotate(-90 40 40)"/>
+              <defs><linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="0%"><stop stop-color="#38BDF8"/><stop offset="1" stop-color="#818CF8"/></linearGradient></defs>
+            </svg>
+            <span class="ring-num">82</span>
+          </div>
+          <div class="score-meta">
+            <div class="score-label">Team Health</div>
+            <div class="score-sub">↑ 14% from last run</div>
+          </div>
+        </div>
+        <div class="hcard-metrics">
+          <div class="metric"><span class="m-label">Fairness</span><div class="m-bar"><div class="m-fill" style="width:78%;background:linear-gradient(90deg,#34D399,#10B981)"></div></div><span class="m-val">78</span></div>
+          <div class="metric"><span class="m-label">Psych Safety</span><div class="m-bar"><div class="m-fill" style="width:85%;background:linear-gradient(90deg,#60A5FA,#3B82F6)"></div></div><span class="m-val">85</span></div>
+          <div class="metric"><span class="m-label">Review Speed</span><div class="m-bar"><div class="m-fill" style="width:62%;background:linear-gradient(90deg,#FBBF24,#F59E0B)"></div></div><span class="m-val">62</span></div>
+        </div>
+        <div class="hcard-footer">
+          <div class="reviewer-row">
+            <div class="r-avatars">
+              <div class="r-av" style="background:#7C3AED">A</div>
+              <div class="r-av" style="background:#0891B2">B</div>
+              <div class="r-av" style="background:#059669">C</div>
+              <div class="r-av more">+7</div>
+            </div>
+            <span class="r-label">10 reviewers analyzed</span>
+          </div>
+          <span class="hcard-badge">⚡ Live</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- ═══════════════ STATS ═══════════════ -->
+<section class="stats">
+  <div class="wrap stats-inner">
+    <div class="stat-card">
+      <div class="stat-icon">🏢</div>
+      <div class="stat-num">30<span>+</span></div>
+      <div class="stat-lbl">Years of Excellence</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-card">
+      <div class="stat-icon">🌍</div>
+      <div class="stat-num">300<span>+</span></div>
+      <div class="stat-lbl">Global Clients</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-card">
+      <div class="stat-icon">📍</div>
+      <div class="stat-num">12</div>
+      <div class="stat-lbl">Geographies</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-card">
+      <div class="stat-icon">👩‍💻</div>
+      <div class="stat-num">1000<span>+</span></div>
+      <div class="stat-lbl">Engineers Worldwide</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FEATURE SPOTLIGHT ═══════════════ -->
+<section class="spotlight" id="solutions">
+  <div class="wrap">
+    <div class="spotlight-inner">
+      <div class="spotlight-left">
+        <span class="eyebrow blue">Featured Hackathon Tool</span>
+        <h2 class="section-h2">PR Review Inequality<br/>Detector</h2>
+        <p class="section-p">
+          Most engineering teams don't realize how unequal their code review workload
+          has become — until someone burns out. Our AI-powered analyzer scans your
+          GitHub repository and reveals the truth behind the numbers.
+        </p>
+        <div class="feature-list">
+          <div class="feat-item">
+            <div class="feat-icon" style="background:rgba(99,102,241,.12);color:#818CF8">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="feat-title">Reviewer Load Distribution</div>
+              <div class="feat-sub">Gini coefficient + per-reviewer breakdown reveals who's carrying the team.</div>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon" style="background:rgba(16,185,129,.12);color:#34D399">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="feat-title">PR Delay & SLA Analytics</div>
+              <div class="feat-sub">Median, P90, and per-reviewer SLA compliance — know where PRs get stuck.</div>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon" style="background:rgba(245,158,11,.12);color:#FBBF24">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="feat-title">Psychological Safety Score</div>
+              <div class="feat-sub">AI-classified comment tone — supportive vs hostile — to detect unsafe team dynamics.</div>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon" style="background:rgba(239,68,68,.12);color:#F87171">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="feat-title">Risk & Burnout Detection</div>
+              <div class="feat-sub">Per-PR risk scoring and late-night/weekend activity patterns that signal burnout.</div>
+            </div>
+          </div>
+        </div>
+        <a href="/app" class="btn-glow">Open PR Analyzer →</a>
+      </div>
+      <div class="spotlight-right">
+        <div class="mockup-wrap">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Analytics dashboard" class="mockup-img"/>
+          <div class="mockup-overlay">
+            <div class="pill-float pill-1">⚠️ 3 High-Risk PRs</div>
+            <div class="pill-float pill-2">📊 Gini: 0.62 — Unequal</div>
+            <div class="pill-float pill-3">🔴 Alice overloaded (47%)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+<section class="hiw" id="how-it-works">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">How It Works</span>
+      <h2 class="section-h2">Insights in three steps.</h2>
+      <p class="section-p" style="max-width:520px;margin:0 auto">No setup, no integrations, no waiting. Just a GitHub repo URL and 30 seconds.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?auto=format&fit=crop&w=400&q=80" alt="GitHub repo"/>
+        </div>
+        <h3 class="step-title">Enter any GitHub repo</h3>
+        <p class="step-desc">Paste an owner/repo slug. Public or private (with token). Pick how many PRs to scan — from 20 to 100.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=400&q=80" alt="AI analysis"/>
+        </div>
+        <h3 class="step-title">AI scans & analyzes</h3>
+        <p class="step-desc">Our engine fetches every PR, comment, review, and timestamp. AI classifies tone, scores risk, and computes fairness metrics.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" alt="Dashboard results"/>
+        </div>
+        <h3 class="step-title">Act on the findings</h3>
+        <p class="step-desc">Explore interactive dashboards, chat with the AI about your results, and export a full Markdown report for your team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ MORE TOOLS ═══════════════ -->
+<section class="tools-section">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Full Solution Suite</span>
+      <h2 class="section-h2">More AI tools — coming soon.</h2>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card tc-active" onclick="location.href='/app'">
+        <div class="tc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Code review"/>
+          <div class="tc-img-overlay"></div>
+          <div class="tc-badge live">● Live</div>
+        </div>
+        <div class="tc-body">
+          <h3>PR Review Inequality Detector</h3>
+          <p>Uncover hidden imbalances in code review — who's overloaded, who's isolated, and what's at risk.</p>
+          <span class="tc-cta">Launch →</span>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Sprint analytics"/>
+          <div class="tc-img-overlay"></div>
+          <div class="tc-badge soon">Coming Soon</div>
+        </div>
+        <div class="tc-body">
+          <h3>Sprint Velocity Analyzer</h3>
+          <p>ML-powered forecasting of sprint velocity, team capacity bottlenecks, and delivery timeline prediction.</p>
+          <span class="tc-cta muted">In Development</span>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Team sentiment"/>
+          <div class="tc-img-overlay"></div>
+          <div class="tc-badge soon">Coming Soon</div>
+        </div>
+        <div class="tc-body">
+          <h3>Developer Sentiment Monitor</h3>
+          <p>Track psychological safety across Slack and GitHub using NLP sentiment analysis to prevent team burnout.</p>
+          <span class="tc-cta muted">In Development</span>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tc-img-wrap">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80" alt="Security audit"/>
+          <div class="tc-img-overlay"></div>
+          <div class="tc-badge soon">Coming Soon</div>
+        </div>
+        <div class="tc-body">
+          <h3>Secure Code Audit AI</h3>
+          <p>Automatically scan pull requests for vulnerabilities with AI-assisted triage and fix suggestions.</p>
+          <span class="tc-cta muted">In Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTORS ═══════════════ -->
+<section class="sectors" id="sectors">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Expertise Across Critical Sectors</span>
+      <h2 class="section-h2">Powering innovation where<br/>precision matters most.</h2>
+      <p class="section-p" style="max-width:560px;margin:0 auto">
+        Mindteck brings 30+ years of deep domain expertise to the industries
+        where engineering quality isn't optional — it's mission-critical.
+      </p>
+    </div>
+    <div class="sectors-grid">
+
+      <div class="sector-card large" style="--accent:#3B82F6">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Semiconductor"/>
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-icon">💡</div>
+          <h3 class="sector-title">Semiconductor</h3>
+          <p class="sector-desc">From chip design verification to embedded firmware — engineering the silicon that powers the world's most advanced systems.</p>
+          <div class="sector-tags"><span>VLSI Design</span><span>Verification</span><span>Embedded</span></div>
+        </div>
+      </div>
+
+      <div class="sector-card" style="--accent:#8B5CF6">
+        <img src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=600&q=80" alt="Defense"/>
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-icon">🛡️</div>
+          <h3 class="sector-title">Defense &amp; Aerospace</h3>
+          <p class="sector-desc">Safety-critical systems built to MIL-SPEC standards — avionics, radar, UAV, and mission-critical embedded software.</p>
+          <div class="sector-tags"><span>Avionics</span><span>DO-178C</span></div>
+        </div>
+      </div>
+
+      <div class="sector-card" style="--accent:#10B981">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&q=80" alt="Medical"/>
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-icon">🏥</div>
+          <h3 class="sector-title">Medical Devices</h3>
+          <p class="sector-desc">FDA-compliant software and firmware for Class II and III medical devices — from diagnostic imaging to patient monitoring.</p>
+          <div class="sector-tags"><span>FDA 510(k)</span><span>IEC 62304</span></div>
+        </div>
+      </div>
+
+      <div class="sector-card" style="--accent:#0EA5E9">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="Networking"/>
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-icon">📡</div>
+          <h3 class="sector-title">Networking &amp; Telecom</h3>
+          <p class="sector-desc">High-performance network stack development, protocol engineering, and 5G infrastructure software for next-gen connectivity.</p>
+          <div class="sector-tags"><span>5G</span><span>SDN/NFV</span></div>
+        </div>
+      </div>
+
+      <div class="sector-card" style="--accent:#F59E0B">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80" alt="Industrial"/>
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-icon">🏭</div>
+          <h3 class="sector-title">Industrial &amp; IoT</h3>
+          <p class="sector-desc">IIoT sensor platforms, SCADA systems, and real-time control software for smart manufacturing and Industry 4.0.</p>
+          <div class="sector-tags"><span>IIoT</span><span>SCADA</span></div>
+        </div>
+      </div>
+
+      <div class="sector-card" style="--accent:#EC4899">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Software"/>
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-icon">💻</div>
+          <h3 class="sector-title">Software &amp; IT</h3>
+          <p class="sector-desc">Cloud-native applications, AI/ML pipelines, and DevOps transformation — enabling the digital continuum for global enterprises.</p>
+          <div class="sector-tags"><span>AI/ML</span><span>Cloud</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section class="about" id="about">
+  <div class="wrap about-inner">
+    <div class="about-img-col">
+      <div class="about-img-stack">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=700&q=80" alt="Engineering team" class="about-img-main"/>
+        <div class="about-img-card">
+          <div class="aic-icon">🏆</div>
+          <div>
+            <div class="aic-title">MINDAITHON 2025</div>
+            <div class="aic-sub">AI Innovation Challenge Winner</div>
+          </div>
+        </div>
+        <div class="about-img-card aic-2">
+          <div class="aic-icon">⭐</div>
+          <div>
+            <div class="aic-title">Real GitHub Data</div>
+            <div class="aic-sub">No mocks, live API analysis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text-col">
+      <span class="eyebrow">About Mindteck</span>
+      <h2 class="section-h2">Engineering intelligence<br/>for the digital era.</h2>
+      <p class="section-p">
+        Mindteck is a global engineering and technology solutions provider with over
+        30 years of expertise, committed to delivering meaningful insights that
+        empower clients to innovate, compete, and advance along the digital continuum.
+      </p>
+      <p class="section-p">
+        The MINDAITHON hackathon challenges our engineers to build AI tools that
+        make development teams more equitable, efficient, and psychologically safe —
+        starting with the PR Review Inequality Detector.
+      </p>
+      <div class="about-badges">
+        <div class="abadge"><span class="ab-icon">🤖</span><div><div class="ab-t">AI / ML</div><div class="ab-s">Core Technology</div></div></div>
+        <div class="abadge"><span class="ab-icon">⚡</span><div><div class="ab-t">Real-Time</div><div class="ab-s">Live GitHub API</div></div></div>
+        <div class="abadge"><span class="ab-icon">🔒</span><div><div class="ab-t">Secure</div><div class="ab-s">Token-based auth</div></div></div>
+      </div>
+      <a href="https://www.mindteck.com/" target="_blank" rel="noopener" class="btn-outline-dark">Visit Mindteck.com →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA BANNER ═══════════════ -->
+<section class="cta-banner">
+  <div class="cta-bg">
+    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1920&q=80" alt="" class="cta-bg-img"/>
+    <div class="cta-bg-overlay"></div>
+  </div>
+  <div class="wrap cta-content">
+    <h2 class="cta-h2">Ready to see what your<br/>team's data really says?</h2>
+    <p class="cta-p">Run your first analysis in under 30 seconds. No signup needed for public repos.</p>
+    <a href="/app" class="btn-glow large">
+      <svg viewBox="0 0 20 20" fill="currentColor" width="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+      Launch PR Inequality Detector
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="url(#lg2)"/><path d="M7 26 L13 11 L18 20 L23 14 L29 26" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="20" r="2.5" fill="#93C5FD"/><defs><linearGradient id="lg2" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#1D4ED8"/><stop offset="1" stop-color="#0EA5E9"/></linearGradient></defs></svg>
+        </div>
+        <span class="logo-wordmark">mind<strong>teck</strong></span>
+      </a>
+      <p class="footer-tagline">Engineering &amp; Technology Solutions<br/>Powering innovation since 1994.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="LinkedIn" class="social-btn">in</a>
+        <a href="#" aria-label="Twitter" class="social-btn">𝕏</a>
+        <a href="#" aria-label="GitHub" class="social-btn">⌥</a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="fcol"><div class="fcol-title">Solutions</div><a href="#">AI / ML</a><a href="#">Cloud</a><a href="#">Digital Transformation</a><a href="#">BPM &amp; Automation</a></div>
+      <div class="fcol"><div class="fcol-title">Industries</div><a href="#">Semiconductor</a><a href="#">Defense</a><a href="#">Medical Devices</a><a href="#">Industrial &amp; IoT</a></div>
+      <div class="fcol"><div class="fcol-title">Company</div><a href="#">About Us</a><a href="#">Careers</a><a href="#">Press Room</a><a href="#">Investors</a></div>
+      <div class="fcol"><div class="fcol-title">Hackathon</div><a href="/app">PR Inequality Detector</a><a href="#">MINDAITHON 2025</a><a href="https://www.mindteck.com/" target="_blank">Mindteck.com ↗</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="wrap fb-inner">
+      <span>© 2025 Mindteck Inc. All rights reserved.</span>
+      <span>Built with ❤️ for MINDAITHON — AI Innovation Hackathon</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Header shadow on scroll */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* Animate elements on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.step, .tool-card, .sector-card, .stat-card, .feat-item, .about-img-card')
+  .forEach(el => { el.classList.add('animate-in'); io.observe(el); });
+
+/* Spotlight effect on featured card */
+document.querySelectorAll('.tc-active').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+    card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+  });
+});
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+</body>
+</html>
